@@ -61,4 +61,9 @@ public class baseStepDefinition {
         saucePage.enterPassword(pwd);
         saucePage.clickLogin();
     }
+
+    @And("close the browser")
+    public void closeTheBrowser() {
+        driver.close();
+    }
 }
