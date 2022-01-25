@@ -4,6 +4,7 @@ Feature: test login
     Given Open the browser
     And launch the website "https://www.saucedemo.com/"
     And log in with "<Username>" and "<Password>"
+    And logout from application
     And close the browser
     Examples:
       | Username      | Password     |

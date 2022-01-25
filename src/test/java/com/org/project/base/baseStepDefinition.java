@@ -1,19 +1,15 @@
 package com.org.project.base;
 
 import com.org.project.sauce.saucePage;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
-import java.util.Map;
-
 public class baseStepDefinition {
 
     WebDriver driver;
-    basePage basePage= new basePage(driver);
+    basePage basePage = new basePage(driver);
     saucePage saucePage;
 
     @Given("Open the browser")
@@ -22,12 +18,13 @@ public class baseStepDefinition {
         String path = System.getProperty("user.dir");
         System.setProperty("webdriver.chrome.driver", path + "\\src\\test\\resources\\drivers\\chromedriver.exe");
         driver = new ChromeDriver();
-       // basePage.start();
+        // basePage.start();
     }
+
     @Given("launch the website {string}")
     public void launch_the_website(String string) throws InterruptedException {
-      //  basePage.launchWebSite(string);
-       driver.get(string);
+        //  basePage.launchWebSite(string);
+        driver.get(string);
         driver.manage().window().maximize();
         Thread.sleep(5000);
     }
@@ -56,14 +53,24 @@ public class baseStepDefinition {
 
     @And("log in with {string} and {string}")
     public void logInWithAnd(String user, String pwd) {
-        saucePage =new saucePage(driver);
+        saucePage = new saucePage(driver);
         saucePage.enterUser(user);
         saucePage.enterPassword(pwd);
         saucePage.clickLogin();
+        System.out.println("Login successfully");
     }
 
     @And("close the browser")
     public void closeTheBrowser() {
         driver.close();
+    }
+
+    @And("logout from application")
+    public void logoutFromApplication() throws InterruptedException {
+        saucePage = new saucePage(driver);
+        saucePage.clickMenu();
+        Thread.sleep(3000);
+        saucePage.clickLogout();
+        System.out.println("Logout successfully");
     }
 }

@@ -23,6 +23,16 @@ public class saucePage {
     @FindBy(id = "login-button")
     WebElement login;
 
+
+    @FindBy(id = "logout_sidebar_link")
+    WebElement logOut;
+
+    @FindBy(id = "react-burger-menu-btn")
+    WebElement menu;
+
+
+
+
     @FindBy(id="a")
     List<WebElement> mylists;
 
@@ -43,5 +53,14 @@ public class saucePage {
     }
     public void clickLogin() {
         login.click();
+    }
+
+
+    public void clickMenu() {
+        menu.click();
+    }
+
+    public void clickLogout() {
+        logOut.click();
     }
 }
