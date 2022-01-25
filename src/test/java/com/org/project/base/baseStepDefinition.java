@@ -1,10 +1,14 @@
 package com.org.project.base;
 
 import com.org.project.sauce.saucePage;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+import java.util.Map;
 
 public class baseStepDefinition {
 
@@ -22,16 +26,15 @@ public class baseStepDefinition {
     }
 
     @Given("launch the website {string}")
-    public void launch_the_website(String string) throws InterruptedException {
+    public void launch_the_website(String url) throws InterruptedException {
         //  basePage.launchWebSite(string);
-        driver.get(string);
+        driver.get(url);
         driver.manage().window().maximize();
         Thread.sleep(5000);
     }
 
     /*@And("login into application with below details")
     public void loginIntoApplicationWithBelowDetails(DataTable testData) {
-
         Map<String, String> data = testData.asMap(String.class, String.class);
         saucePage =new saucePage(driver);
         saucePage.enterUser(data.get("username"));
@@ -42,7 +45,6 @@ public class baseStepDefinition {
 
     /*@And("login into application with below details")
     public void loginIntoApplicationWithBelowDetails(DataTable testData) {
-
         List<String> details = testData.asList(String.class);
         saucePage =new saucePage(driver);
         saucePage.enterUser(details.get(0));
