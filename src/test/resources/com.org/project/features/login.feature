@@ -1,9 +1,8 @@
 Feature: test login
-
+  @KT @smoke @regression @sanity @login
   Scenario Outline: Verify buy a product on sauce website
     Given Open the browser
     And launch the website "https://www.saucedemo.com/"
-
     And log in with "<Username>" and "<Password>"
     Examples:
       | Username      | Password     |

@@ -43,7 +43,7 @@ public class baseStepDefinition {
     }*/
 
 
-    @And("login into application with below details")
+    /*@And("login into application with below details")
     public void loginIntoApplicationWithBelowDetails(DataTable testData) {
 
         List<String> details = testData.asList(String.class);
@@ -51,11 +51,12 @@ public class baseStepDefinition {
         saucePage.enterUser(details.get(0));
         saucePage.enterPassword(details.get(1));
         saucePage.clickLogin();
-    }
+    }*/
 
 
     @And("log in with {string} and {string}")
     public void logInWithAnd(String user, String pwd) {
+        saucePage =new saucePage(driver);
         saucePage.enterUser(user);
         saucePage.enterPassword(pwd);
         saucePage.clickLogin();
