@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,15 @@ public class baseStepDefinition {
         System.out.println("Login successfully");
     }
 
+    /*@And("login into application with below details")
+    public void loginIntoApplicationWithBelowDetails(String user, String pwd) {
+        saucePage = new saucePage(driver);
+        saucePage.enterUser(user);
+        saucePage.enterPassword(pwd);
+        saucePage.clickLogin();
+        System.out.println("Login successfully");
+    }*/
+
     @And("close the browser")
     public void closeTheBrowser() {
         driver.close();
@@ -74,5 +84,79 @@ public class baseStepDefinition {
         Thread.sleep(3000);
         saucePage.clickLogout();
         System.out.println("Logout successfully");
+    }
+
+
+    @And("verify {string} error message")
+    public void verifyErrorMessage(String expectedError) {
+        saucePage = new saucePage(driver);
+        Assert.assertEquals(expectedError,saucePage.getErrorMessage());
+
+    }
+
+
+    @And("add item to cart")
+    public void addItemToCart() throws InterruptedException {
+        saucePage = new saucePage(driver);
+        saucePage.clickaddtocart();
+        Thread.sleep(3000);
+        System.out.println("item added successfully");
+
+    }
+
+    @And("go to cart")
+    public void goToCart() throws InterruptedException {
+        saucePage = new saucePage(driver);
+        saucePage.clickgotocart();
+        Thread.sleep(3000);
+       
+    }
+
+    @And("verify price on cart")
+    public void verifyPriceOnCart(String expectedPrice) {
+        saucePage = new saucePage(driver);
+        Assert.assertEquals(expectedPrice,saucePage.getitemPrice());
+    }
+
+
+    @And("click on checkout")
+    public void clickOnCheckout() {
+        saucePage = new saucePage(driver);
+        saucePage.clickCheckout();
+        
+    }
+
+    @And("Pass below data")
+    public void passBelowData(String fname, String lname, String pcode) {
+        saucePage = new saucePage(driver);
+        saucePage.enterFirstname(fname);
+        saucePage.enterLastname(lname);
+        saucePage.enterPostalcode(pcode);
+
+    }
+
+    @And("click on continue")
+    public void clickOnContinue() {
+        saucePage = new saucePage(driver);
+        saucePage.clickcontinue();
+    }
+
+    @And("verify details")
+    public void verifyDetails(String expectedPrice) {
+        saucePage = new saucePage(driver);
+        Assert.assertEquals(expectedPrice,saucePage.getcheckoutPrice());
+    }
+
+    @And("click on finish")
+    public void clickOnFinish() {
+        saucePage = new saucePage(driver);
+        saucePage.clickFinish();
+    }
+
+    @And("verify success message {string}")
+    public void verifySuccessMessage(String expectedMessage) {
+        saucePage = new saucePage(driver);
+        Assert.assertEquals(expectedMessage,saucePage.getsuccessMessage());
+
     }
 }
