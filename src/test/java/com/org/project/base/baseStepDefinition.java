@@ -4,6 +4,7 @@ import com.org.project.sauce.saucePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -131,8 +132,8 @@ public class baseStepDefinition {
     }
 
     @And("Pass below data")
-    public void passBelowData(DataTable usercredentials) {
-        for (Map<String, String> data : usercredentials.asMaps(String.class, String.class)) {
+    public void passBelowData(DataTable shipDetails) {
+        for (Map<String, String> data : shipDetails.asMaps(String.class, String.class)) {
             saucePage = new saucePage(driver);
             saucePage.enterFirstname(data.get("fname"));
             saucePage.enterLastname(data.get("lname"));
@@ -168,4 +169,15 @@ public class baseStepDefinition {
     }
 
 
+    @Then("log in with below data")
+    public void logInWithBelowData(DataTable usercredentials) {
+        for (Map<String, String> data : usercredentials.asMaps(String.class, String.class)) {
+            saucePage = new saucePage(driver);
+            saucePage.enterUser(data.get("Username"));
+            saucePage.enterPassword(data.get("Password"));
+            saucePage.clickLogin();
+            System.out.println("Login successfully");
+
+        }
+    }
 }

@@ -1,3 +1,5 @@
+
+@smoke @regression @sanity
 Feature: test login
 
 
@@ -11,19 +13,19 @@ Feature: test login
  #    | password | secret_sauce  |
  # ***********************************learning***********************************
 
-
-
-
-  @KT @smoke @regression @sanity @login
-  Scenario Outline: Verify login success on sauce website
+  Background: login into sauce application
     Given Open the browser
-    And launch the website "https://www.saucedemo.com/"
-    And log in with "<Username>" and "<Password>"
-    And logout from application
-    And close the browser
-    Examples:
+    When launch the website "https://www.saucedemo.com/"
+    Then log in with below data
       | Username      | Password     |
       | standard_user | secret_sauce |
+
+
+@task
+  Scenario: Verify login success on sauce website
+    When logout from application
+    Then close the browser
+
 
 #Scenario Outline: Verify login success on sauce website  #TASK2 vertical data read
 #  Given Open the browser
@@ -53,11 +55,8 @@ Feature: test login
       | problem_user             | secret_sauce1 | Epic sadface: Username and password do not match any user in this service |
       | performance_glitch_user1 | secret_sauce  | Epic sadface: Username and password do not match any user in this service |
 
-  @task3
+  @task
   Scenario Outline: Verify buy a product on sauce website #TASK3
-    Given Open the browser
-    And launch the website "https://www.saucedemo.com/"
-    And log in with "<Username>" and "<Password>"
     And add item to cart
     And go to cart
     And click on checkout
@@ -71,5 +70,5 @@ Feature: test login
     And logout from application
     And close the browser
     Examples:
-      | Username      | Password     |  fname  | lname | zipcode |
-      | standard_user | secret_sauce |  mahesh | g     | 500020  |
+      | fname  | lname | zipcode |
+      | mahesh | g     | 500020  |
