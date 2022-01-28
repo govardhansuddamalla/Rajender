@@ -1,6 +1,6 @@
 package com.org.project.base;
 
-import com.org.project.sauce.saucePage;
+import com.org.project.sauce.SaucePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,15 +9,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.Map;
 
-import static com.org.project.sauce.saucePage.price;
+import static com.org.project.sauce.SaucePage.price;
 
 public class baseStepDefinition {
 
     WebDriver driver;
     basePage basePage = new basePage(driver);
-    saucePage saucePage;
+    SaucePage saucePage;
 
     @Given("Open the browser")
     public void open_the_browser() {
@@ -58,7 +60,7 @@ public class baseStepDefinition {
 
     @And("log in with {string} and {string}")
     public void logInWithAnd(String user, String pwd) {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.enterUser(user);
         saucePage.enterPassword(pwd);
         saucePage.clickLogin();
@@ -81,7 +83,7 @@ public class baseStepDefinition {
 
     @And("logout from application")
     public void logoutFromApplication() throws InterruptedException {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickMenu();
         Thread.sleep(3000);
         saucePage.clickLogout();
@@ -91,7 +93,7 @@ public class baseStepDefinition {
 
     @And("verify {string} error message")
     public void verifyErrorMessage(String expectedError) {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         Assert.assertEquals(expectedError, saucePage.getErrorMessage());
 
     }
@@ -99,7 +101,7 @@ public class baseStepDefinition {
 
     @And("add item to cart")
     public void addItemToCart() throws InterruptedException {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickaddtocart();
         saucePage.getPriceOfFirstProduct();
         Thread.sleep(3000);
@@ -109,7 +111,7 @@ public class baseStepDefinition {
 
     @And("go to cart")
     public void goToCart() throws InterruptedException {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickgotocart();
         Thread.sleep(3000);
 
@@ -117,7 +119,7 @@ public class baseStepDefinition {
 
     @And("verify price {string} on cart")
     public void verifyPriceOnCart(String expectedPrice) throws InterruptedException {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         Assert.assertEquals(expectedPrice, saucePage.getitemPrice());
         Thread.sleep(2000);
         System.out.println("Item price verified successfully");
@@ -126,7 +128,7 @@ public class baseStepDefinition {
 
     @And("click on checkout")
     public void clickOnCheckout() {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickCheckout();
 
     }
@@ -134,7 +136,7 @@ public class baseStepDefinition {
     @And("Pass below data")
     public void passBelowData(DataTable shipDetails) {
         for (Map<String, String> data : shipDetails.asMaps(String.class, String.class)) {
-            saucePage = new saucePage(driver);
+            saucePage = new SaucePage(driver);
             saucePage.enterFirstname(data.get("fname"));
             saucePage.enterLastname(data.get("lname"));
             saucePage.enterPostalcode(data.get("zipcode"));
@@ -145,38 +147,41 @@ public class baseStepDefinition {
 
     @And("click on continue")
     public void clickOnContinue() {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickcontinue();
     }
 
     @And("verify details")
     public void verifyDetails() {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         Assert.assertTrue(saucePage.getPriceOfCheckoutPage().contains(price));
     }
 
     @And("click on finish")
     public void clickOnFinish() {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         saucePage.clickFinish();
     }
 
     @And("verify success message {string}")
     public void verifySuccessMessage(String expectedMessage) {
-        saucePage = new saucePage(driver);
+        saucePage = new SaucePage(driver);
         Assert.assertEquals(expectedMessage, saucePage.getsuccessMessage());
 
     }
 
 
     @Then("log in with below data")
-    public void logInWithBelowData(DataTable usercredentials) {
+    public void logInWithBelowData(DataTable usercredentials) throws AWTException {
         for (Map<String, String> data : usercredentials.asMaps(String.class, String.class)) {
-            saucePage = new saucePage(driver);
+            saucePage = new SaucePage(driver);
             saucePage.enterUser(data.get("Username"));
             saucePage.enterPassword(data.get("Password"));
-            saucePage.clickLogin();
-            System.out.println("Login successfully");
+            //saucePage.clickLogin();
+            Robot r = new Robot();
+            r.keyPress(KeyEvent.VK_ENTER);
+            r.keyRelease(KeyEvent.VK_ENTER);
+            System.out.println("*********Login successfully**************");
 
         }
     }

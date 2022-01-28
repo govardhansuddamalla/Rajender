@@ -55,7 +55,7 @@ Feature: test login
       | problem_user             | secret_sauce1 | Epic sadface: Username and password do not match any user in this service |
       | performance_glitch_user1 | secret_sauce  | Epic sadface: Username and password do not match any user in this service |
 
-  @task
+
   Scenario Outline: Verify buy a product on sauce website #TASK3
     And add item to cart
     And go to cart

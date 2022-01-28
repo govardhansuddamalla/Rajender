@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by rajender.koyyeda on 25-01-2022.
  */
-public class saucePage {
+public class SaucePage {
 
     public static String price = null;
 
@@ -89,7 +89,7 @@ public class saucePage {
 
     WebDriver driver;
 
-    public saucePage(WebDriver driver) {
+    public SaucePage(WebDriver driver) {
         this.driver = driver;
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 20);
         PageFactory.initElements(factory, this);
