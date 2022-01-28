@@ -54,7 +54,7 @@ Scenario Outline: Verify buy a product on sauce website #TASK3
   And log in with "<Username>" and "<Password>"
   And add item to cart
   And go to cart
-  And verify price on cart
+  And verify price "<expectedPrice>" on cart
   And click on checkout
   And Pass below data
   |fname|lname|zipcode|
@@ -66,5 +66,5 @@ Scenario Outline: Verify buy a product on sauce website #TASK3
   And logout from application
   And close the browser
   Examples:
-    | Username      | Password     |fname|lname|zipcode|
-    | standard_user | secret_sauce |mahesh|g   |500020 |
+    | Username      | Password     ||expectedPrice|fname|lname|zipcode|
+    | standard_user | secret_sauce ||$29.99|mahesh|g   |500020 |

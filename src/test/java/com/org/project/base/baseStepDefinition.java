@@ -112,10 +112,12 @@ public class baseStepDefinition {
        
     }
 
-    @And("verify price on cart")
-    public void verifyPriceOnCart(String expectedPrice) {
+    @And("verify price {string} on cart")
+    public void verifyPriceOnCart(String expectedPrice) throws InterruptedException {
         saucePage = new saucePage(driver);
         Assert.assertEquals(expectedPrice,saucePage.getitemPrice());
+        Thread.sleep(2000);
+        System.out.println("Item price verified successfully");
     }
 
 
@@ -159,4 +161,6 @@ public class baseStepDefinition {
         Assert.assertEquals(expectedMessage,saucePage.getsuccessMessage());
 
     }
+
+
 }

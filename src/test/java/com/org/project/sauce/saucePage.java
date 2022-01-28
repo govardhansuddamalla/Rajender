@@ -90,7 +90,7 @@ public class saucePage {
 
     public void clickaddtocart() { addToCart.click();}
 
-    public void clickgotocart() { clickgotocart();}
+    public void clickgotocart() { goToCart.click();}
 
 
     public void clickMenu() {
@@ -117,7 +117,7 @@ public class saucePage {
 
     public void enterPostalcode(String pcode) {postalCode.sendKeys(pcode); }
 
-    public void clickcontinue() {clickcontinue();}
+    public void clickcontinue() {continueToNext.click();}
 
     public String getcheckoutPrice (){
         String finalPrice = checkOutPrice.getText();
