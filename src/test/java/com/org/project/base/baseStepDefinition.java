@@ -8,8 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-import java.util.List;
 import java.util.Map;
+
+import static com.org.project.sauce.saucePage.price;
 
 public class baseStepDefinition {
 
@@ -90,7 +91,7 @@ public class baseStepDefinition {
     @And("verify {string} error message")
     public void verifyErrorMessage(String expectedError) {
         saucePage = new saucePage(driver);
-        Assert.assertEquals(expectedError,saucePage.getErrorMessage());
+        Assert.assertEquals(expectedError, saucePage.getErrorMessage());
 
     }
 
@@ -99,6 +100,7 @@ public class baseStepDefinition {
     public void addItemToCart() throws InterruptedException {
         saucePage = new saucePage(driver);
         saucePage.clickaddtocart();
+        saucePage.getPriceOfFirstProduct();
         Thread.sleep(3000);
         System.out.println("item added successfully");
 
@@ -109,13 +111,13 @@ public class baseStepDefinition {
         saucePage = new saucePage(driver);
         saucePage.clickgotocart();
         Thread.sleep(3000);
-       
+
     }
 
     @And("verify price {string} on cart")
     public void verifyPriceOnCart(String expectedPrice) throws InterruptedException {
         saucePage = new saucePage(driver);
-        Assert.assertEquals(expectedPrice,saucePage.getitemPrice());
+        Assert.assertEquals(expectedPrice, saucePage.getitemPrice());
         Thread.sleep(2000);
         System.out.println("Item price verified successfully");
     }
@@ -125,15 +127,18 @@ public class baseStepDefinition {
     public void clickOnCheckout() {
         saucePage = new saucePage(driver);
         saucePage.clickCheckout();
-        
+
     }
 
     @And("Pass below data")
-    public void passBelowData(String fname, String lname, String pcode) {
-        saucePage = new saucePage(driver);
-        saucePage.enterFirstname(fname);
-        saucePage.enterLastname(lname);
-        saucePage.enterPostalcode(pcode);
+    public void passBelowData(DataTable usercredentials) {
+        for (Map<String, String> data : usercredentials.asMaps(String.class, String.class)) {
+            saucePage = new saucePage(driver);
+            saucePage.enterFirstname(data.get("fname"));
+            saucePage.enterLastname(data.get("lname"));
+            saucePage.enterPostalcode(data.get("zipcode"));
+        }
+
 
     }
 
@@ -144,9 +149,9 @@ public class baseStepDefinition {
     }
 
     @And("verify details")
-    public void verifyDetails(String expectedPrice) {
+    public void verifyDetails() {
         saucePage = new saucePage(driver);
-        Assert.assertEquals(expectedPrice,saucePage.getcheckoutPrice());
+        Assert.assertTrue(saucePage.getPriceOfCheckoutPage().contains(price));
     }
 
     @And("click on finish")
@@ -158,7 +163,7 @@ public class baseStepDefinition {
     @And("verify success message {string}")
     public void verifySuccessMessage(String expectedMessage) {
         saucePage = new saucePage(driver);
-        Assert.assertEquals(expectedMessage,saucePage.getsuccessMessage());
+        Assert.assertEquals(expectedMessage, saucePage.getsuccessMessage());
 
     }
 

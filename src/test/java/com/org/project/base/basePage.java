@@ -29,7 +29,7 @@ public class basePage {
 
     }
 
-    public void closeBroser() {
+    public void closeBrowser() {
         driver.close();
         driver.quit();
     }

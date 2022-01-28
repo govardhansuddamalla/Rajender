@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class saucePage {
 
+    public static String price = null;
+
     @FindBy(id = "user-name")
     WebElement username;
 
@@ -64,6 +66,24 @@ public class saucePage {
     @FindBy(xpath = "//h2[contains(text(),'THANK YOU FOR YOUR ORDER')]")
     WebElement successMessage;
 
+
+    @FindBy(xpath = "(//div[@class='inventory_item_price'])[1]")
+    WebElement priceOfFirstProduct;
+
+
+    @FindBy(xpath = "//div[@class='summary_subtotal_label']")
+    WebElement priceOfcheckout;
+
+    public String getPriceOfFirstProduct() {
+        price = priceOfFirstProduct.getText().trim();
+        return price;
+    }
+
+    public String getPriceOfCheckoutPage() {
+        String priceCheckout = priceOfcheckout.getText().trim();
+        return priceCheckout;
+    }
+
     @FindBy(id = "a")
     List<WebElement> mylists;
 
@@ -88,9 +108,13 @@ public class saucePage {
         login.click();
     }
 
-    public void clickaddtocart() { addToCart.click();}
+    public void clickaddtocart() {
+        addToCart.click();
+    }
 
-    public void clickgotocart() { goToCart.click();}
+    public void clickgotocart() {
+        goToCart.click();
+    }
 
 
     public void clickMenu() {
@@ -105,29 +129,43 @@ public class saucePage {
         String actualError = errorMessage.getText();
         return actualError;
     }
+
     public String getitemPrice() {
         String actualPrice = itemPrice.getText();
         return actualPrice;
     }
-    public void clickCheckout() { checkOut.click();}
 
-    public void enterFirstname(String fname) {firstName.sendKeys(fname); }
+    public void clickCheckout() {
+        checkOut.click();
+    }
 
-    public void enterLastname(String lname) {lastName.sendKeys(lname); }
+    public void enterFirstname(String fname) {
+        firstName.sendKeys(fname);
+    }
 
-    public void enterPostalcode(String pcode) {postalCode.sendKeys(pcode); }
+    public void enterLastname(String lname) {
+        lastName.sendKeys(lname);
+    }
 
-    public void clickcontinue() {continueToNext.click();}
+    public void enterPostalcode(String pcode) {
+        postalCode.sendKeys(pcode);
+    }
 
-    public String getcheckoutPrice (){
+    public void clickcontinue() {
+        continueToNext.click();
+    }
+
+    public String getcheckoutPrice() {
         String finalPrice = checkOutPrice.getText();
         return finalPrice;
     }
 
-    public void clickFinish() {finish.click();}
+    public void clickFinish() {
+        finish.click();
+    }
 
-    public String getsuccessMessage () {
-        String ThankUmessage = successMessage.getAccessibleName();
+    public String getsuccessMessage() {
+        String ThankUmessage = successMessage.getText().trim();
         return ThankUmessage;
     }
 
