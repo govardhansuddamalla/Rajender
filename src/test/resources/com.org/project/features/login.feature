@@ -14,32 +14,30 @@ Feature: test login
  # ***********************************learning***********************************
 
   Background: login into sauce application
-    Given Open the browser
-    When launch the website "https://www.saucedemo.com/"
-    Then log in with below data
-      | Username      | Password     |
-      | standard_user | secret_sauce |
+  Given Open the browser
+  When launch the website "https://www.saucedemo.com/"
+  Then log in with below data
+  | Username      | Password     |
+  | standard_user | secret_sauce |
 
 
-@task
-  Scenario: Verify login success on sauce website
-    When logout from application
-    Then close the browser
+#@task
+#  Scenario: Verify login success on sauce website
+#    When logout from application
+#    Then close the browser
 
-
-#Scenario Outline: Verify login success on sauce website  #TASK2 vertical data read
-#  Given Open the browser
-#  And launch the website "https://www.saucedemo.com/"
-#  And login into application with below details
-#    | username   | password   |
-#    | <username> | <password> |
-#  And logout from application
-#  And close the browser
-#  Examples:
-#    | username      | password     |
-#    | standard_user | secret_sauce |
-
-
+@task2
+Scenario Outline: Verify login success on sauce website  #TASK2 vertical data read
+  Given Open the browser
+  And launch the website "https://www.saucedemo.com/"
+  And login into application with below details
+    | username   | password   |
+    | <username> | <password> |
+  And logout from application
+  And close the browser
+  Examples:
+    | username      | password     |
+    | standard_user | secret_sauce |
 
 
   @task1
@@ -72,3 +70,16 @@ Feature: test login
     Examples:
       | fname  | lname | zipcode |
       | mahesh | g     | 500020  |
+
+  @task4
+  Scenario Outline: Verify login success on sauce website  #TASK4 by entering user name with robot class
+    Given Open the browser
+    And launch the website "https://www.saucedemo.com/"
+    And enter the username using robot class
+    And enter the "<password>" and login into the application
+    And logout from application
+    And close the browser
+    Examples:
+      | password     |
+      | secret_sauce |
+

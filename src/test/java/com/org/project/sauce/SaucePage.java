@@ -14,6 +14,7 @@ import java.util.List;
 public class SaucePage {
 
     public static String price = null;
+    public static String productName = null;
 
     @FindBy(id = "user-name")
     WebElement username;
@@ -74,6 +75,23 @@ public class SaucePage {
     @FindBy(xpath = "//div[@class='summary_subtotal_label']")
     WebElement priceOfcheckout;
 
+    @FindBy(xpath = "(//div[@class='inventory_item_name'])[1]")
+    WebElement pNameOfFirstProduct;
+
+    @FindBy(xpath = "//div[@class='inventory_item_name']")
+    WebElement pNameAtCheckOutPage;
+
+    public String getNameOfFirstProduct() {
+        productName = pNameOfFirstProduct.getText().trim();
+        return productName;
+    }
+
+    public String getPNameAtCheckOut () {
+        String nameAtCheckout = pNameAtCheckOutPage.getText().trim();
+        return nameAtCheckout;
+
+    }
+
     public String getPriceOfFirstProduct() {
         price = priceOfFirstProduct.getText().trim();
         return price;
@@ -95,6 +113,7 @@ public class SaucePage {
         PageFactory.initElements(factory, this);
     }
 
+    public void clickUser () {username.click();}
 
     public void enterUser(String user) {
         username.sendKeys(user);

@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.util.Map;
 
 import static com.org.project.sauce.SaucePage.price;
+import static com.org.project.sauce.SaucePage.productName;
 
 public class baseStepDefinition {
 
@@ -35,7 +36,7 @@ public class baseStepDefinition {
         //  basePage.launchWebSite(string);
         driver.get(url);
         driver.manage().window().maximize();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
 
     /*@And("login into application with below details")
@@ -85,7 +86,7 @@ public class baseStepDefinition {
     public void logoutFromApplication() throws InterruptedException {
         saucePage = new SaucePage(driver);
         saucePage.clickMenu();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         saucePage.clickLogout();
         System.out.println("Logout successfully");
     }
@@ -103,6 +104,7 @@ public class baseStepDefinition {
     public void addItemToCart() throws InterruptedException {
         saucePage = new SaucePage(driver);
         saucePage.clickaddtocart();
+        saucePage.getNameOfFirstProduct();
         saucePage.getPriceOfFirstProduct();
         Thread.sleep(3000);
         System.out.println("item added successfully");
@@ -154,6 +156,7 @@ public class baseStepDefinition {
     @And("verify details")
     public void verifyDetails() {
         saucePage = new SaucePage(driver);
+        Assert.assertTrue(saucePage.getPNameAtCheckOut().contains(productName));
         Assert.assertTrue(saucePage.getPriceOfCheckoutPage().contains(price));
     }
 
@@ -185,4 +188,60 @@ public class baseStepDefinition {
 
         }
     }
+
+    @And("login into application with below details")
+    public void loginIntoApplicationWithBelowDetails(DataTable logindetails) {
+        for (Map<String, String> data: logindetails.asMaps(String.class, String.class)) {
+            saucePage = new SaucePage(driver);
+            saucePage.enterUser(data.get("username"));
+            saucePage.enterPassword(data.get("password"));
+            saucePage.clickLogin();
+
+        }
+    }
+
+    @And("enter the username using robot class")
+    public void enterTheUsernameUsingRobotClass() throws AWTException {
+        saucePage = new SaucePage(driver);
+        Robot r = new Robot();
+        saucePage.clickUser();
+        r.keyPress(KeyEvent.VK_S);
+        r.keyRelease(KeyEvent.VK_S);
+        r.keyPress(KeyEvent.VK_T);
+        r.keyRelease(KeyEvent.VK_T);
+        r.keyPress(KeyEvent.VK_A);
+        r.keyRelease(KeyEvent.VK_A);
+        r.keyPress(KeyEvent.VK_N);
+        r.keyRelease(KeyEvent.VK_N);
+        r.keyPress(KeyEvent.VK_D);
+        r.keyRelease(KeyEvent.VK_D);
+        r.keyPress(KeyEvent.VK_A);
+        r.keyRelease(KeyEvent.VK_A);
+        r.keyPress(KeyEvent.VK_R);
+        r.keyRelease(KeyEvent.VK_R);
+        r.keyPress(KeyEvent.VK_D);
+        r.keyRelease(KeyEvent.VK_D);
+        r.keyPress(KeyEvent.VK_SHIFT);
+        r.keyPress(KeyEvent.VK_MINUS);
+        r.keyRelease(KeyEvent.VK_MINUS);
+        r.keyRelease(KeyEvent.VK_SHIFT);
+        r.keyPress(KeyEvent.VK_U);
+        r.keyRelease(KeyEvent.VK_U);
+        r.keyPress(KeyEvent.VK_S);
+        r.keyRelease(KeyEvent.VK_S);
+        r.keyPress(KeyEvent.VK_E);
+        r.keyRelease(KeyEvent.VK_E);
+        r.keyPress(KeyEvent.VK_R);
+        r.keyRelease(KeyEvent.VK_R);
+
+    }
+
+    @And("enter the {string} and login into the application")
+    public void enterTheAndLoginIntoTheApplication(String pwd) {
+        saucePage = new SaucePage(driver);
+        saucePage.enterPassword(pwd);
+        saucePage.clickLogin();
+        System.out.println("************Login Successfully************");
+    }
 }
+
