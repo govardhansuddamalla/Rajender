@@ -13,12 +13,12 @@ Feature: test login
  #    | password | secret_sauce  |
  # ***********************************learning***********************************
 
-  Background: login into sauce application
-  Given Open the browser
-  When launch the website "https://www.saucedemo.com/"
-  Then log in with below data
-  | Username      | Password     |
-  | standard_user | secret_sauce |
+ # Background: login into sauce application
+ # Given Open the browser
+ # When launch the website "https://www.saucedemo.com/"
+ # Then log in with below data
+ # | Username      | Password     |
+ # | standard_user | secret_sauce |
 
 
 #@task
@@ -53,7 +53,7 @@ Scenario Outline: Verify login success on sauce website  #TASK2 vertical data re
       | problem_user             | secret_sauce1 | Epic sadface: Username and password do not match any user in this service |
       | performance_glitch_user1 | secret_sauce  | Epic sadface: Username and password do not match any user in this service |
 
-
+  @task3
   Scenario Outline: Verify buy a product on sauce website #TASK3
     And add item to cart
     And go to cart
@@ -77,9 +77,21 @@ Scenario Outline: Verify login success on sauce website  #TASK2 vertical data re
     And launch the website "https://www.saucedemo.com/"
     And enter the username using robot class
     And enter the "<password>" and login into the application
+    And Add all products to the cart
     And logout from application
     And close the browser
     Examples:
       | password     |
       | secret_sauce |
 
+  @task5
+  Scenario Outline: Verify login success on sauce website  #TASK5 by entering user name with scanner class
+    Given Open the browser
+    And launch the website "https://www.saucedemo.com/"
+    And enter the username using scanner class
+    And enter the "<password>" and login into the application
+    And logout from application
+    And close the browser
+    Examples:
+      | password     |
+      | secret_sauce |

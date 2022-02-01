@@ -1,18 +1,25 @@
 package com.org.project.coreJava;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by rajender.koyyeda on 28-01-2022.
  */
 public class Sample {
     public static void main(String[] agrs) {
-        System.out.println("enter your age");
 
-
-        /*Scanner sc= new Scanner(System.in);
+       /* Scanner sc= new Scanner(System.in);
         String age=sc.nextLine();
         System.out.println(" your age is: " +age);*/
+
+
+
 
         /*int x = 10;
         float y = x;

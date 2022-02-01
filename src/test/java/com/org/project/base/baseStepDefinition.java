@@ -5,6 +5,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -12,6 +13,7 @@ import org.testng.Assert;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Map;
+import java.util.Scanner;
 
 import static com.org.project.sauce.SaucePage.price;
 import static com.org.project.sauce.SaucePage.productName;
@@ -242,6 +244,30 @@ public class baseStepDefinition {
         saucePage.enterPassword(pwd);
         saucePage.clickLogin();
         System.out.println("************Login Successfully************");
+    }
+
+    @And("enter the username using scanner class")
+    public void enterTheUsernameUsingScannerClass() {
+        saucePage = new SaucePage(driver);
+        System.out.println("enter user name:");
+        Scanner sc = new Scanner(System.in);
+        String user = sc.nextLine();
+        saucePage.enterUser(user);
+        System.out.println("username is:"+user);
+
+
+    }
+
+    @And("Add all products to the cart")
+    public void addAllProductsToTheCart() throws InterruptedException {
+    saucePage = new SaucePage(driver);
+    saucePage.clickaddtocart();
+    saucePage.clickBikeLight();
+    saucePage.clickTShirt();
+    saucePage.clickJacket();
+    saucePage.clickOneSie();
+    saucePage.clickRedTShirt();
+    Thread.sleep(2000);
     }
 }
 

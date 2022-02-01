@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by rajender.koyyeda on 25-01-2022.
@@ -36,6 +37,21 @@ public class SaucePage {
 
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     WebElement addToCart;
+
+    @FindBy(id = "add-to-cart-sauce-labs-bike-light")
+    WebElement bikeLight;
+
+    @FindBy(id="add-to-cart-sauce-labs-bolt-t-shirt")
+    WebElement tShirt;
+
+    @FindBy(id = "add-to-cart-sauce-labs-fleece-jacket")
+    WebElement jacket;
+
+    @FindBy(id = "add-to-cart-sauce-labs-onesie")
+    WebElement oneSie;
+
+    @FindBy(id = "add-to-cart-test.allthethings()-t-shirt-(red)")
+    WebElement redTShirt;
 
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
     WebElement goToCart;
@@ -119,6 +135,7 @@ public class SaucePage {
         username.sendKeys(user);
     }
 
+
     public void enterPassword(String pwd) {
         password.sendKeys(pwd);
     }
@@ -127,9 +144,17 @@ public class SaucePage {
         login.click();
     }
 
-    public void clickaddtocart() {
-        addToCart.click();
-    }
+    public void clickaddtocart() {addToCart.click();}
+
+    public void clickBikeLight () {bikeLight.click();}
+
+    public void clickTShirt () {tShirt.click();}
+
+    public void clickJacket () {jacket.click();}
+
+    public void clickOneSie () {oneSie.click();}
+
+    public void clickRedTShirt () {redTShirt.click();}
 
     public void clickgotocart() {
         goToCart.click();
