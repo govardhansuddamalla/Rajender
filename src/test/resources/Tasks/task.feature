@@ -17,3 +17,9 @@
 #                      11-20==>teenager
 #                      21-50==>middle ager
 #                      51-100==>oldaged
+
+####################### 1st feb 2022###################################################
+
+#1 list the string method
+#2 list split regExpressions
+#3 write a code for each method
