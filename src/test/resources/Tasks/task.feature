@@ -20,16 +20,16 @@
 
   ####################### 1st feb 2022###################################################
 
-#1 list the string method
-#2 list split regExpressions
-#3 write a code for each method
+#1 list the string method          ----- completed
+#2 list split regExpressions        ----- Half Completed
+#3 write a code for each method   ---completed
 
 ###########################2nd feb 2022################################################
 
     #1     covert any for loop into for each from your existing code
     #2     create class as parent extend to child ....execute parents methods
     #3     create parameter constructor for parent class and assign variable values
-    #4     create interface for automationJob (selenium,java...etc) implement in class
+    #4     create interface for automationJob (selenium,java...etc) implement in class ---------completed
     #5     type of inheritance A,B,C,D names as classnames
 
     #https://www.javatpoint.com/java-tutorial  for oops
