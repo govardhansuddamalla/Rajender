@@ -155,7 +155,7 @@ String b="koyyeda";
         System.out.println(x.equalsIgnoreCase(y));
         System.out.println(x.substring(5));
         System.out.println(x.substring(5,7));
-        System.out.println(x.replace('e','Z'));*/
+        System.out.println(x.replace('e','Z'));
 
 
         String x="Rajender is boy";
@@ -169,7 +169,25 @@ String b="koyyeda";
         System.out.println(x.length());
         System.out.println(x2.length);  //
         System.out.println(x2[0]);
-        System.out.println(x==y);
+        System.out.println(x==y);*/
+
+
+        /*int[] scores = { 215, 234, 218, 189, 221, 290};
+
+        for(int i = 0; i < scores.length; i++)
+        {
+            int score = scores[i];
+            System.out.print(score + "  ");
+
+        }System.out.println();
+
+
+     //same as above
+        for(int a : scores)
+        {
+            System.out.print(a + "  ");
+        }*/
+
 
 
 

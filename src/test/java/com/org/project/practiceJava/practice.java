@@ -1,4 +1,4 @@
-package com.org.project.coreJava;
+package com.org.project.practiceJava;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
