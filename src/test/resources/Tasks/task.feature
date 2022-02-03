@@ -35,3 +35,10 @@
     #https://www.javatpoint.com/java-tutorial  for oops
     #this ==>https://www.javatpoint.com/this-keyword
     #inheritance ==>https://www.javatpoint.com/inheritance-in-java
+
+  ###########################3rd feb 2022################################################
+
+    #1 string type single dimentional array create and read ......Feature:
+    #2 single dimention two arrays and multiply
+    #3 multi 3 array ===> add to 4th array ===> 3*3
+    #4 copy and clone for above 3 arrays
