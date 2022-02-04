@@ -27,8 +27,8 @@
 ###########################2nd feb 2022################################################
 
     #1     covert any for loop into for each from your existing code
-    #2     create class as parent extend to child ....execute parents methods
-    #3     create parameter constructor for parent class and assign variable values
+    #2     create class as parent extend to child ....execute parents methods ---------completed
+    #3     create parameter constructor for parent class and assign variable values ---------completed
     #4     create interface for automationJob (selenium,java...etc) implement in class ---------completed
     #5     type of inheritance A,B,C,D names as classnames
 
@@ -38,7 +38,7 @@
 
   ###########################3rd feb 2022################################################
 
-    #1 string type single dimentional array create and read ......Feature:
+    #1 string type single dimentional array create and read ......Feature:  ---------completed
     #2 single dimention two arrays and multiply
     #3 multi 3 array ===> add to 4th array ===> 3*3
     #4 copy and clone for above 3 arrays
