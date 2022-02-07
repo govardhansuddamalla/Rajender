@@ -42,3 +42,82 @@
     #2 single dimention two arrays and multiply   ---------completed
     #3 multi 3 array ===> add to 4th array ===> 3*3
     #4 copy and clone for above 3 arrays          ---------completed
+
+
+
+
+
+
+
+##################################7th feb 2022##########################################
+
+#  collections -->https://www.javatpoint.com/collections-in-java
+#
+#  Iterable
+#
+#  collection--->4 List  Set Map Queues
+#
+#  List-->   ---allow duplicates,No sync (duplicate element of different data types)
+#  ArrayList -->It uses a "dynamic array" to store the duplicate element of different data types. The ArrayList class maintains the insertion order and is non-synchronized.act as a list
+#  LinkedList-->It uses a "doubly linked list" internally to store the elements. It can store the duplicate elements. It maintains the insertion order and is not synchronized.act as a list and queue
+#  Vector-->dynamic array to store the data elements. It is similar to ArrayList. However, It is synchronized
+#  stack-->stack is the subclass of Vector. It implements the last-in-first-out data structure
+#List <data-type> list1= new ArrayList();
+#List <data-type> list2 = new LinkedList();
+#List <data-type> list3 = new Vector();
+#List <data-type> list4 = new Stack();
+#  --------------------------------------------------------------------------------------------------------------------------
+#  Set --> java.util package, No Duplicate,one nul allow
+#  HashSet  -->uses a hash table for storage. Hashing is used to store the elements in the HashSet. It contains unique items.
+#  LinkedHashSet ->extends the HashSet class and implements Set interface. Like HashSet, It also contains unique elements. It maintains the insertion order and permits null elements.
+#
+#  SortedSet-->arranged in the increasing (ascending) order.
+#  TreeSet-->unique elements. However, the access and retrieval time of TreeSet is quite fast. The elements in TreeSet stored in ascending order.
+#
+#  ----------------------------------------------------------------------------------
+#  map.entrySet()
+#  Map.Entry Interface : put ,get ,set keys/values
+#  map-->doesn't allow duplicate keys, but you can have duplicate values
+#  HashMap-->allow null keys and values,HashMap is the implementation of Map, but it doesn't maintain any order.keys should be unique. If you try to insert the duplicate key, it will replace the element of the corresponding key
+#  LinkedHashMap-->allow null keys and values,It inherits HashMap class. It maintains "insertion order".
+#  Sortedmap---interface
+#  TreeMap-->doesn't allow any null key or value.TreeMap is the implementation of Map and SortedMap. It maintains ascending order.
+#  ------------------------------------------
+#  HashMap<Integer,String> map=new HashMap<Integer,String>();//Creating HashMap
+#  map.put(1,"Mango");  //Put elements in Map
+#  map.put(2,"Apple");
+#  map.put(3,"Banana");
+#  map.put(4,"Grapes");
+#
+#  System.out.println("Iterating Hashmap...");
+#  for(Map.Entry m : map.entrySet()){
+#  System.out.println(m.getKey()+" "+m.getValue());
+#  }
+#
+#  ---------------------------------------------
+#
+#  Program:::
+#  Map map=new HashMap();
+#  //Adding elements to map
+#  map.put(1,"Amit");
+#  //Traversing Map
+#  Set set=map.entrySet();//Converting to Set so that we can traverse
+#  Iterator itr=set.iterator();
+#  while(itr.hasNext()){
+#  //Converting to Map.Entry so that we can get key and value separately
+#  Map.Entry entry=(Map.Entry)itr.next();
+#  System.out.println(entry.getKey()+" "+entry.getValue());
+#  ------------------------------------------
+#  for(Map.Entry m:map.entrySet()){
+#  System.out.println(m.getKey()+" "+m.getValue());
+#  }
+#
+#  --------------------------------------
+#  Queue -->  first-in-first-out order. allows duplicate values.
+#  PriorityQueue -->It holds the elements/objects which are to be processed by their priorities. It doesn't allow null values,
+#  Deque        --->remove and add the elements from both the side. Deque stands for a double-ended queue
+#  ArrayDeque -->add or delete the elements from both the ends. ArrayDeque is faster than ArrayList and Stack and has no capacity restrictions.
+
+
+    #create 4 clasess for each type of collection
+    #Each class should has methods with their types
