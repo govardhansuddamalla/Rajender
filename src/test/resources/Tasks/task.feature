@@ -39,6 +39,6 @@
   ###########################3rd feb 2022################################################
 
     #1 string type single dimentional array create and read ......Feature:  ---------completed
-    #2 single dimention two arrays and multiply
+    #2 single dimention two arrays and multiply   ---------completed
     #3 multi 3 array ===> add to 4th array ===> 3*3
-    #4 copy and clone for above 3 arrays
+    #4 copy and clone for above 3 arrays          ---------completed
