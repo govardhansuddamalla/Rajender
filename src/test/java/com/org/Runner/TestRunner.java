@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         features = {"classpath:com.org/project"},
         glue = {"com.org.project"},
         plugin = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json", "junit:target/cucumber-reports/Cucumber.xml"},
-        tags = "@task2"
+        tags = "@task11"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 }

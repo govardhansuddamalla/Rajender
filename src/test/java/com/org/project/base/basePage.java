@@ -1,16 +1,24 @@
 package com.org.project.base;
 
+import com.org.project.utills.Browser;
+import com.org.project.utills.ConfigFile;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
+import static com.org.project.utills.ConfigFile.propertiesAsMap;
+
 /**
  * Created by rajender.koyyeda on 25-01-2022.
  */
-public class basePage {
+public class basePage extends Browser {
 
    WebDriver driver ;
+
+    public basePage() {
+        PageFactory.initElements(new AjaxElementLocatorFactory(getBrowser(), 30), this);
+    }
 
     public basePage(WebDriver driver1) {
         this.driver = driver1;
@@ -29,8 +37,16 @@ public class basePage {
 
     }
 
-    public void closeBrowser() {
-        driver.close();
-        driver.quit();
+      public static void quitBrowser() {
+        closeBrowser();
+    }
+
+    public static void openBrowser() {
+        delete_all_cookies();
+        getBrowser().get(ConfigFile.applicationUrl);
+    }
+
+    public static void delete_all_cookies() {
+        getBrowser().manage().deleteAllCookies();
     }
 }

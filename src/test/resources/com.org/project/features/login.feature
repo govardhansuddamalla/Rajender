@@ -95,3 +95,10 @@ Scenario Outline: Verify login success on sauce website  #TASK2 vertical data re
     Examples:
       | password     |
       | secret_sauce |
+
+
+
+  @rajenderPageFactory
+  Scenario: Verify login success on sauce website via pagefactor
+    Given loginToApplication
+
