@@ -1,5 +1,6 @@
 package com.org.project.sauce;
 
+import com.org.project.base.basePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 /**
  * Created by rajender.koyyeda on 25-01-2022.
  */
-public class SaucePage {
+public class SaucePage extends basePage {
 
     public static String price = null;
     public static String productName = null;

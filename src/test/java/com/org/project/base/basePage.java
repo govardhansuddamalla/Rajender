@@ -2,6 +2,7 @@ package com.org.project.base;
 
 import com.org.project.utills.Browser;
 import com.org.project.utills.ConfigFile;
+import com.org.project.utills.LogConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -12,7 +13,7 @@ import static com.org.project.utills.ConfigFile.propertiesAsMap;
 /**
  * Created by rajender.koyyeda on 25-01-2022.
  */
-public class basePage extends Browser {
+public class basePage extends Browser implements LogConfiguration {
 
    WebDriver driver ;
 
@@ -41,12 +42,15 @@ public class basePage extends Browser {
         closeBrowser();
     }
 
-    public static void openBrowser() {
+    public void openBrowser() {
         delete_all_cookies();
         getBrowser().get(ConfigFile.applicationUrl);
+        log().info("app url launched");System.out.println("app url launched--sop");
     }
 
     public static void delete_all_cookies() {
         getBrowser().manage().deleteAllCookies();
     }
+
+
 }
