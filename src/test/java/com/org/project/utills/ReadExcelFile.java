@@ -20,8 +20,10 @@ public class ReadExcelFile {
 
 
     public static void main(String... strings) throws IOException, BiffException, WriteException {
-
+        System.out.print("path user.dir : "+System.getProperty("user.dir"));
         File file = new File(System.getProperty("user.dir") + "/src/test/resources/com.org/project/config/Input.xls");
+
+
         Workbook workbook = Workbook.getWorkbook(file);
         //Read sheet inside the workbook by its name
         //if we pass 0 it means sheet1
@@ -30,22 +32,22 @@ public class ReadExcelFile {
         //Find number of rows in excel file
 
         int rowCount = sheet.getRows();
+
         WritableWorkbook writableWorkbook = Workbook.createWorkbook(file, workbook);
         WritableSheet writableSheet = writableWorkbook.getSheet(0);
-
-        //Create a loop over all the rows of excel file to read it
 
         for (int i = 1; i < rowCount ; i++) {
 
             String x = sheet.getCell(0, i).getContents();
             String y = sheet.getCell(1, i).getContents();
             String z = x + y;
-            Label label= new Label(2, i, z);
+
+            Label label= new Label(2, i, z);    // Number interger
             writableSheet.addCell(label);
         }
-        writableWorkbook.write();
-        writableWorkbook.close();
-        workbook.close();
+        writableWorkbook.write(); //save
+        writableWorkbook.close();  //close
+        workbook.close();    //close
 
     }
 

@@ -121,3 +121,9 @@
 
     #create 4 clasess for each type of collection
     #Each class should has methods with their types
+
+
+    #9th feb 2022
+
+    #1 try to give INFO/DEBUG/ERROR and run the code
+    #2 read data from output file ..... take integer and add them in new row

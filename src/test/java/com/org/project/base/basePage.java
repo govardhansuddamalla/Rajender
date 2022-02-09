@@ -25,6 +25,7 @@ public class basePage extends Browser implements LogConfiguration {
         this.driver = driver1;
        // AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 20);
         PageFactory.initElements(driver,this);
+        log().error("hi");
     }
 
     public void start() {
@@ -46,6 +47,8 @@ public class basePage extends Browser implements LogConfiguration {
         delete_all_cookies();
         getBrowser().get(ConfigFile.applicationUrl);
         log().info("app url launched");System.out.println("app url launched--sop");
+        log().error("app url launched-error");System.out.println("app url launched--sop-error");
+        log().debug("app url launched-debug");System.out.println("app url launched--sop-debug");
     }
 
     public static void delete_all_cookies() {
