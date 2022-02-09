@@ -38,6 +38,7 @@ public class LoginPage extends basePage {
 
     public void clickOnLoginButton() {
         login.click();
+        log().info("clicked on login button");
     }
 
 
