@@ -3,7 +3,7 @@ package com.org.project.coreJava;
 /**
  * Created by rajender.koyyeda on 02-02-2022.
  */
-public class Construction implements BuildingConstruction{
+public class ConstructionInterface implements Interface_BuildingConstruction {
 
 
     public void baseMent() {

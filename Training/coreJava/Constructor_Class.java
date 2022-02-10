@@ -3,13 +3,13 @@ package com.org.project.coreJava;
 /**
  * Created by rajender.koyyeda on 02-02-2022.
  */
-public class ClassObject_Class {
+public class Constructor_Class {
 
 
-    public ClassObject_Class(String y){
+    public Constructor_Class(String y){
         System.out.println(" Parameter constructor of ClassObject_Class " +y);
     }
-    public ClassObject_Class(){
+    public Constructor_Class(){
         System.out.println(" Default constructor of ClassObject_Class ");
     }
     int a = 10;

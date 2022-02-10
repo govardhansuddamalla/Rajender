@@ -1,4 +1,4 @@
-package com.org.project.sauce;
+package com.org.project.sauceHome;
 
 import com.org.project.base.basePage;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by rajender.koyyeda on 25-01-2022.
  */
-public class SaucePage extends basePage {
+public class sauceHomePage extends basePage {
 
     public static String price = null;
     public static String productName = null;
@@ -124,7 +123,7 @@ public class SaucePage extends basePage {
 
     WebDriver driver;
 
-    public SaucePage(WebDriver driver) {
+    public sauceHomePage(WebDriver driver) {
         this.driver = driver;
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 20);
         PageFactory.initElements(factory, this);

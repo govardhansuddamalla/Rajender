@@ -10,7 +10,9 @@ import static com.org.project.utills.ConfigFile.userName;
 
 public class LoginStepDefinition extends basePage {
 
+
     LoginPage loginPage = new LoginPage();
+
 
     @Given("loginToApplication")
     public void logintoapplication() {

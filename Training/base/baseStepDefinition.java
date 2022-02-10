@@ -1,10 +1,11 @@
 package com.org.project.base;
 
-import com.org.project.sauceHome.sauceHomePage;
+import com.org.project.sauceHome.SaucePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -14,14 +15,14 @@ import java.awt.event.KeyEvent;
 import java.util.Map;
 import java.util.Scanner;
 
-import static com.org.project.sauceHome.sauceHomePage.price;
-import static com.org.project.sauceHome.sauceHomePage.productName;
+import static com.org.project.sauceHome.SaucePage.price;
+import static com.org.project.sauceHome.SaucePage.productName;
 
 public class baseStepDefinition {
 
     WebDriver driver;
     basePage basePage = new basePage(driver);
-    sauceHomePage sauceHomePage;
+    SaucePage saucePage;
 
     @Given("Open the browser")
     public void open_the_browser() {
@@ -62,10 +63,10 @@ public class baseStepDefinition {
 
     @And("log in with {string} and {string}")
     public void logInWithAnd(String user, String pwd) {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.enterUser(user);
-        sauceHomePage.enterPassword(pwd);
-        sauceHomePage.clickLogin();
+        saucePage = new SaucePage(driver);
+        saucePage.enterUser(user);
+        saucePage.enterPassword(pwd);
+        saucePage.clickLogin();
         System.out.println("Login successfully");
     }
 
@@ -85,28 +86,28 @@ public class baseStepDefinition {
 
     @And("logout from application")
     public void logoutFromApplication() throws InterruptedException {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickMenu();
+        saucePage = new SaucePage(driver);
+        saucePage.clickMenu();
         Thread.sleep(2000);
-        sauceHomePage.clickLogout();
+        saucePage.clickLogout();
         System.out.println("Logout successfully");
     }
 
 
     @And("verify {string} error message")
     public void verifyErrorMessage(String expectedError) {
-        sauceHomePage = new sauceHomePage(driver);
-        Assert.assertEquals(expectedError, sauceHomePage.getErrorMessage());
+        saucePage = new SaucePage(driver);
+        Assert.assertEquals(expectedError, saucePage.getErrorMessage());
 
     }
 
 
     @And("add item to cart")
     public void addItemToCart() throws InterruptedException {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickaddtocart();
-        sauceHomePage.getNameOfFirstProduct();
-        sauceHomePage.getPriceOfFirstProduct();
+        saucePage = new SaucePage(driver);
+        saucePage.clickaddtocart();
+        saucePage.getNameOfFirstProduct();
+        saucePage.getPriceOfFirstProduct();
         Thread.sleep(3000);
         System.out.println("item added successfully");
 
@@ -114,16 +115,16 @@ public class baseStepDefinition {
 
     @And("go to cart")
     public void goToCart() throws InterruptedException {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickgotocart();
+        saucePage = new SaucePage(driver);
+        saucePage.clickgotocart();
         Thread.sleep(3000);
 
     }
 
     @And("verify price {string} on cart")
     public void verifyPriceOnCart(String expectedPrice) throws InterruptedException {
-        sauceHomePage = new sauceHomePage(driver);
-        Assert.assertEquals(expectedPrice, sauceHomePage.getitemPrice());
+        saucePage = new SaucePage(driver);
+        Assert.assertEquals(expectedPrice, saucePage.getitemPrice());
         Thread.sleep(2000);
         System.out.println("Item price verified successfully");
     }
@@ -131,18 +132,18 @@ public class baseStepDefinition {
 
     @And("click on checkout")
     public void clickOnCheckout() {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickCheckout();
+        saucePage = new SaucePage(driver);
+        saucePage.clickCheckout();
 
     }
 
     @And("Pass below data")
     public void passBelowData(DataTable shipDetails) {
         for (Map<String, String> data : shipDetails.asMaps(String.class, String.class)) {
-            sauceHomePage = new sauceHomePage(driver);
-            sauceHomePage.enterFirstname(data.get("fname"));
-            sauceHomePage.enterLastname(data.get("lname"));
-            sauceHomePage.enterPostalcode(data.get("zipcode"));
+            saucePage = new SaucePage(driver);
+            saucePage.enterFirstname(data.get("fname"));
+            saucePage.enterLastname(data.get("lname"));
+            saucePage.enterPostalcode(data.get("zipcode"));
         }
 
 
@@ -150,27 +151,27 @@ public class baseStepDefinition {
 
     @And("click on continue")
     public void clickOnContinue() {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickcontinue();
+        saucePage = new SaucePage(driver);
+        saucePage.clickcontinue();
     }
 
     @And("verify details")
     public void verifyDetails() {
-        sauceHomePage = new sauceHomePage(driver);
-        Assert.assertTrue(sauceHomePage.getPNameAtCheckOut().contains(productName));
-        Assert.assertTrue(sauceHomePage.getPriceOfCheckoutPage().contains(price));
+        saucePage = new SaucePage(driver);
+        Assert.assertTrue(saucePage.getPNameAtCheckOut().contains(productName));
+        Assert.assertTrue(saucePage.getPriceOfCheckoutPage().contains(price));
     }
 
     @And("click on finish")
     public void clickOnFinish() {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.clickFinish();
+        saucePage = new SaucePage(driver);
+        saucePage.clickFinish();
     }
 
     @And("verify success message {string}")
     public void verifySuccessMessage(String expectedMessage) {
-        sauceHomePage = new sauceHomePage(driver);
-        Assert.assertEquals(expectedMessage, sauceHomePage.getsuccessMessage());
+        saucePage = new SaucePage(driver);
+        Assert.assertEquals(expectedMessage, saucePage.getsuccessMessage());
 
     }
 
@@ -178,9 +179,9 @@ public class baseStepDefinition {
     @Then("log in with below data")
     public void logInWithBelowData(DataTable usercredentials) throws AWTException {
         for (Map<String, String> data : usercredentials.asMaps(String.class, String.class)) {
-            sauceHomePage = new sauceHomePage(driver);
-            sauceHomePage.enterUser(data.get("Username"));
-            sauceHomePage.enterPassword(data.get("Password"));
+            saucePage = new SaucePage(driver);
+            saucePage.enterUser(data.get("Username"));
+            saucePage.enterPassword(data.get("Password"));
             //saucePage.clickLogin();
             Robot r = new Robot();
             r.keyPress(KeyEvent.VK_ENTER);
@@ -193,19 +194,19 @@ public class baseStepDefinition {
     @And("login into application with below details")
     public void loginIntoApplicationWithBelowDetails(DataTable logindetails) {
         for (Map<String, String> data: logindetails.asMaps(String.class, String.class)) {
-            sauceHomePage = new sauceHomePage(driver);
-            sauceHomePage.enterUser(data.get("username"));
-            sauceHomePage.enterPassword(data.get("password"));
-            sauceHomePage.clickLogin();
+            saucePage = new SaucePage(driver);
+            saucePage.enterUser(data.get("username"));
+            saucePage.enterPassword(data.get("password"));
+            saucePage.clickLogin();
 
         }
     }
 
     @And("enter the username using robot class")
     public void enterTheUsernameUsingRobotClass() throws AWTException {
-        sauceHomePage = new sauceHomePage(driver);
+        saucePage = new SaucePage(driver);
         Robot r = new Robot();
-        sauceHomePage.clickUser();
+        saucePage.clickUser();
         r.keyPress(KeyEvent.VK_S);
         r.keyRelease(KeyEvent.VK_S);
         r.keyPress(KeyEvent.VK_T);
@@ -239,19 +240,19 @@ public class baseStepDefinition {
 
     @And("enter the {string} and login into the application")
     public void enterTheAndLoginIntoTheApplication(String pwd) {
-        sauceHomePage = new sauceHomePage(driver);
-        sauceHomePage.enterPassword(pwd);
-        sauceHomePage.clickLogin();
+        saucePage = new SaucePage(driver);
+        saucePage.enterPassword(pwd);
+        saucePage.clickLogin();
         System.out.println("************Login Successfully************");
     }
 
     @And("enter the username using scanner class")
     public void enterTheUsernameUsingScannerClass() {
-        sauceHomePage = new sauceHomePage(driver);
+        saucePage = new SaucePage(driver);
         System.out.println("enter user name:");
         Scanner sc = new Scanner(System.in);
         String user = sc.nextLine();
-        sauceHomePage.enterUser(user);
+        saucePage.enterUser(user);
         System.out.println("username is:"+user);
 
 
@@ -259,13 +260,13 @@ public class baseStepDefinition {
 
     @And("Add all products to the cart")
     public void addAllProductsToTheCart() throws InterruptedException {
-    sauceHomePage = new sauceHomePage(driver);
-    sauceHomePage.clickaddtocart();
-    sauceHomePage.clickBikeLight();
-    sauceHomePage.clickTShirt();
-    sauceHomePage.clickJacket();
-    sauceHomePage.clickOneSie();
-    sauceHomePage.clickRedTShirt();
+    saucePage = new SaucePage(driver);
+    saucePage.clickaddtocart();
+    saucePage.clickBikeLight();
+    saucePage.clickTShirt();
+    saucePage.clickJacket();
+    saucePage.clickOneSie();
+    saucePage.clickRedTShirt();
     Thread.sleep(2000);
     }
 }

@@ -1,11 +1,11 @@
 package com.org.project.coreJava;
 
-public class MainClass {
+public class Constructor_MainClass {
     public static void main(String args[]) {
 
-        ClassObject_Class1 classObject_class1 = new ClassObject_Class1("raj");
+        Constructor_Class1 classObject_class1 = new Constructor_Class1("raj");
 
-        Construction construction = new Construction();
+        ConstructionInterface construction = new ConstructionInterface();
 
         /*System.out.println(classObject_class1.a);
         System.out.println(classObject_class1.b);

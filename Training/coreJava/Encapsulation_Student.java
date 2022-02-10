@@ -3,7 +3,7 @@ package com.org.project.coreJava;
 /**
  * Created by rajender.koyyeda on 02-02-2022.
  */
-public class Student {
+public class Encapsulation_Student {
     //private data member
     private String name;
     //getter method for name

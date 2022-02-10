@@ -10,6 +10,5 @@ public class Sample {
         String age=sc.nextLine();
         System.out.println(" your age is: " +age);*/
 
-
     }
 }

@@ -1,12 +1,12 @@
 package com.org.project.coreJava;
 
-public class ClassObject_Class1 extends ClassObject_Class {
+public class Constructor_Class1 extends Constructor_Class {
 
-    public ClassObject_Class1(String x){
+    public Constructor_Class1(String x){
         bb=x;
         System.out.println(" Parameter constructor of ClassObject_Class1 " +bb);
     }
-    public ClassObject_Class1(){
+    public Constructor_Class1(){
         System.out.println(" Default constructor of ClassObject_Class1 ");
     }
 
